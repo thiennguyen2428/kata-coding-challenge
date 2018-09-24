@@ -1,0 +1,21 @@
+{
+  "name": "kata-coding-challenge",
+  "version": "1.0.0",
+  "description": "This project contains some challenges, exercises that I used to practice day by day to sharpen my programming skills",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "kata",
+    "challenges",
+    "javascript",
+    "node",
+    "TDD"
+  ],
+  "author": "Thien Nguyen (https://www.facebook.com/ITTrex)",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  }
+}
