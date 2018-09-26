@@ -22,7 +22,7 @@ describe('Test suite 26-09-18_4', () => {
     });
   });
 
-  describe('Solution 1', () => {
+  describe('Solution 2', () => {
     data.forEach((val, index) => {
       it(`should return ${expected[index]}`, () => {
         assert.equal(findMissingLetterSol2(val), expected[index]);
