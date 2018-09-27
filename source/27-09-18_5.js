@@ -1,7 +1,3 @@
-
-// 2017 -> 7 1 02 -> 1 7 02 -> 2071
-// 20321 -> 12302 -> 123 0 2 -> 023 1 2 -> 320 1 2 -> 21023
-
 /**
  * @description You have to create a function that takes 
  * a positive integer number and returns 
