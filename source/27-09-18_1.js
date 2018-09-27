@@ -24,15 +24,12 @@ const pigItSol1 = (str) => {
 /* eslint-disable arrow-body-style */
 const pigItSol2 = (str) => {
   return str.replace(/\w+/g, (val) => {
-    if (val[0].match(/[a-z]/i)) {
-      return `${val.slice(1)}${val[0]}ay`;
-    }
-    
-    return val;
+    return `${val.slice(1)}${val[0]}ay`;
   });
 };
 
 // Solution 3: Similar to solution 2 but with other regular expression
+// We can search string and divide it into multiple part using /()()()....()/g -> \$1 \$2 \$3 ....
 /* eslint-disable no-useless-escape */
 const pigItSol3 = (str) => {
   return str.replace(/(\w)(\w*)(\s|$)/g, '\$2\$1ay\$3');
