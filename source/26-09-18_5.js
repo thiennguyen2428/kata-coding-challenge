@@ -29,7 +29,7 @@ const digPowSol1 = (n, p) => {
   return Number.isInteger(sum / n) ? sum / n : -1;
 };
 
-// Solution 2 : convert number to String to handel
+// Solution 2 : convert number to String to handle
 const digPowSol2 = (n, p) => {
   const sum = String(n).split('').reduce((a, c, i) => a + (c ** (p + i)), 0);
 
