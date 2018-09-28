@@ -7,31 +7,37 @@
  * 2017 ==> 2071
  */
 
-// Solution 1: Follow these algorithms
-// 2017 -> 7 1 02 -> 1 7 02 -> 2071
-// 2022 -> 22 0 2 ->  
-// 20321 -> 12302 -> 123 0 2 -> 023 1 2 -> 320 1 2 -> 21023 
+/**
+ * Solution 1: Algorithm - follow these steps 
+ * 1. Reverse String: 9447806370373  ---> 3730736087449
+ * 2. Find the pivot 37 3 0736087449 : 3 is the pivod
+ * 3. Swap pivot to the min number of the left part (bigger than pivot) 33 7 0736087449
+ * 4. Sort descending left part 33 7  0736087449
+ * 5. Reverse again: -> 9447806370733
+ */
+ 
 const nextBiggerSol1 = (n) => {
-  const revArr = Number(n).toString().split('').reverse();
-  const pivot = revArr.findIndex((val, index, arr) => val > arr[index + 1]) + 1;
+  let minLeft = 0;
+  let leftNums = [];
+  let result = [];
+  const numbers = Number(n).toString().split('').reverse();
+  const pivot = numbers.findIndex((val, index, arr) => val > arr[index + 1]) + 1;
 
-  if (pivot === 0) return -1;
-
-  const leftArr = revArr.slice(0, pivot);
-  const minBigger = leftArr.reduce((min, current) => {
-    if (current > revArr[pivot]) {
-      if (min === 0 || current < min) {
-        return current;
+  if (pivot === 0) {
+    return -1;
+  }
+  leftNums = numbers.slice(0, pivot);
+  minLeft = leftNums.reduce((min, val) => {
+    if (val > numbers[pivot]) {
+      if (min === 0 || val < min) {
+        return val;
       }
     }
     return min;
   }, 0);
-
-  leftArr[leftArr.indexOf(minBigger)] = revArr[pivot];
-  revArr[pivot] = minBigger;
-  
-  const leftArrSort = leftArr.sort((a, b) => b - a);
-  const result = [...leftArrSort, ...revArr.slice(pivot)];
+  leftNums[leftNums.indexOf(minLeft)] = numbers[pivot];
+  numbers[pivot] = minLeft;
+  result = [...leftNums.sort((a, b) => b - a), ...numbers.slice(pivot)];
 
   return Number(result.reverse().join(''));
 };
