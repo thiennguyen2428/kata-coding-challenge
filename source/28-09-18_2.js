@@ -11,23 +11,29 @@
  * will never contain letters that do not occur in one of the triplets given to you.
  */
 
-// Solution 1 :
+// Solution 1: Algorithm - Following these step
+// 1. First remaining letters are the character that only appears in row[0]
+// 2. Removing all first letters when we found them (arr.shift())
+// 3. Loop it again until all the child arrays are empty
+// -> Using while loop every() method and shift method to implement solution
+
 
 const recoverSecretSol1 = (triplets) => {
   let result = '';
-
-  while (triplets.some(arr => arr.length)) {
-    for (let i = 0; i < triplets.length; ++i) {
-      const letter = triplets[i][0];
+  const temp = triplets.map(arr => arr.map(val => val));
+  
+  while (temp.some(arr => arr.length)) {
+    for (let i = 0; i < temp.length; ++i) {
+      const letter = temp[i][0];
       let check = false;
 
       if (letter) {
-        check = triplets.every(arr => arr.indexOf(letter) !== 1 && arr.indexOf(letter) !== 2);
+        check = temp.every(arr => arr.indexOf(letter) <= 0);
       }
       if (check) {
         result += letter;
-        for (let j = 0; j < triplets.length; ++j) {
-          if (triplets[j].indexOf(letter) === 0) triplets[j].shift();
+        for (let j = 0; j < temp.length; ++j) {
+          if (temp[j].indexOf(letter) === 0) temp[j].shift();
         }
       }
     }
@@ -36,4 +42,19 @@ const recoverSecretSol1 = (triplets) => {
   return result;
 };
 
-module.exports = { recoverSecretSol1 };
+// Solution 2: Similar idea to Solution 2 but we use recursive function
+const recoverSecretSol2 = (triplets) => {
+  for (let i = 0; i < triplets.length; ++i) {
+    const letter = triplets[i][0];
+    
+    if (triplets.every(arr => arr.indexOf(letter) <= 0)) {
+      const temp = triplets.map(arr => arr.filter(val => val !== letter));
+      
+      return letter + recoverSecretSol2(temp.filter(arr => arr.length));
+    }
+  }
+  
+  return '';
+};
+
+module.exports = { recoverSecretSol1, recoverSecretSol2 };
