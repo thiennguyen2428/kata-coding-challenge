@@ -15,9 +15,10 @@
  */
 
 // Solution 1: Holy-s***. This kata reminds me "Programming Technique" course that has been
-// taken while i was in first-year at US. So we will use something called Dynamic Programming 
-// to approach the problem by starting from bottom to top of the pyramid.
-// God bess my day. God bess Dr Dinh Ba Tien
+// taken since i was in first-year at University of Science. 
+// So we will use something called Dynamic Programming to approach 
+// the problem by starting from bottom to top of the pyramid.
+// God bess my day. God bess Dr. Dinh Ba Tien
 const longestSlideDownSol1 = (pyramid) => {
   const temp = pyramid.map(arr => arr.map(val => val));
   const n = temp.length;
