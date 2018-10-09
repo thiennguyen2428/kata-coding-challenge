@@ -62,7 +62,7 @@ const listNameSol3 = (names) => {
 const listNameSol4 = (names) => {
   const lists = names.map(val => val.name);
 
-  return lists.join(', ').replace(/(.*), (.*)$/g, '$1 & $2');
+  return lists.join(', ').replace(/(.*),(.*)$/g, '$1 &$2');
 };
 
 module.exports = {
